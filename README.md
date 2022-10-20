@@ -5,9 +5,9 @@ Contains all logic to verify your NFT metadata against the HIP412@1.0.0 format.
 ## File structure
 ```text
 |
-|- examples -> Contains various faulty use cases to test the validation logic
-|- schemas -> Contains the HIP412@1.0.0 schema (IPFS link: ipfs://bafkreigvrqi2f2xy642cpokilhqgudh2qoph7vqmywd2muuenk2eimvpiy or [GitHub link](https://gist.github.com/michielmulders/571c496789ede04c9074817cee834246))
-|- validators -> Contains different additional validator helper functions on top of the `jsonschema` validation package
+|_ /examples -> Contains various faulty use cases to test the validation logic
+|_ /schemas -> Contains the HIP412@1.0.0 schema (IPFS link: ipfs://bafkreigvrqi2f2xy642cpokilhqgudh2qoph7vqmywd2muuenk2eimvpiy or [GitHub link](https://gist.github.com/michielmulders/571c496789ede04c9074817cee834246))
+|_ /validators -> Contains different additional validator helper functions on top of the `jsonschema` validation package
 ```
 
 ## Run the project with your NFT metadata
