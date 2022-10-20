@@ -1,13 +1,12 @@
 const schema = require("./schemas/HIP412@1.0.0.json");
 
 /* Validators */
-const { attributesValidator } = require('./validators/attributes');
-const { localizationValidator } = require('./validators/localization');
-const { SHA256Validator } = require('./validators/SHA256');
+const { attributesValidator } = require("./validators/attributes");
+const { localizationValidator } = require("./validators/localization");
+const { SHA256Validator } = require("./validators/SHA256");
 
 const Validator = require("jsonschema").Validator;
 const validator = new Validator();
-
 
 /*
  * @desc: error parser for "jsonschema" valiator to display errors in a readable way
@@ -208,3 +207,13 @@ if (result.errors.length > 0) errorParser(result.errors);
 console.log(attributesValidator(example011));
 console.log(localizationValidator(example011));
 console.log(SHA256Validator(example011));
+
+/* Count errors for example011*/
+console.log(
+  `--> Found ${
+    result.errors.length +
+    attributesValidator(example011).length +
+    SHA256Validator(example011).length +
+    SHA256Validator(example011).length
+  } validation error(s)`
+);
