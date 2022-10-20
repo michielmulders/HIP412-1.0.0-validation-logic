@@ -208,7 +208,7 @@ console.log(attributesValidator(example011));
 console.log(localizationValidator(example011));
 console.log(SHA256Validator(example011));
 
-/* Count errors for example011*/
+/* Count errors for example011 */
 console.log(
   `--> Found ${
     result.errors.length +
