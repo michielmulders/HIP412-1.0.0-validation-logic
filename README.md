@@ -14,13 +14,13 @@ Contains all logic to verify your NFT metadata against the HIP412@1.0.0 format.
 
 To install dependency `jsonschema`, run:
 
-```sh
+```bash
 npm install
 ```
 
 To run the project:
 
-```sh
+```bash
 node index
 ```
 
