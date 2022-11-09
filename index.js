@@ -213,7 +213,7 @@ console.log(
   `--> Found ${
     result.errors.length +
     attributesValidator(example011).length +
-    SHA256Validator(example011).length +
+    localizationValidator(example011).length +
     SHA256Validator(example011).length
   } validation error(s)`
 );
