@@ -4,20 +4,7 @@ const schema = require("./schemas/HIP412@1.0.0.json");
 const { attributesValidator } = require("./validators/attributes");
 const { localizationValidator } = require("./validators/localization");
 const { SHA256Validator } = require("./validators/SHA256");
-
-const Validator = require("jsonschema").Validator;
-const validator = new Validator();
-
-/*
- * @desc: error parser for "jsonschema" valiator to display errors in a readable way
- */
-const errorParser = (errors) => {
-  let count = 1;
-  errors.forEach((error) => {
-    console.log(`Error ${count}: ${error.message}`);
-    count++;
-  });
-};
+const { schemaValidator } = require("./validators/schema");
 
 /*
 Example error for JSON schema validator NPM package:
@@ -58,10 +45,8 @@ Example error for JSON schema validator NPM package:
  */
 const example001 = require("./examples/example-001.json");
 
-let result = validator.validate(example001, schema);
 console.log(`\n\n>>> Example 1`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example001));
 console.log(attributesValidator(example001));
 console.log(localizationValidator(example001));
 console.log(SHA256Validator(example001));
@@ -73,10 +58,8 @@ console.log(SHA256Validator(example001));
  */
 const example002 = require("./examples/example-002.json");
 
-result = validator.validate(example002, schema);
 console.log(`\n\n>>> Example 2`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example002));
 console.log(attributesValidator(example002));
 console.log(localizationValidator(example002));
 console.log(SHA256Validator(example002));
@@ -88,10 +71,8 @@ console.log(SHA256Validator(example002));
  */
 const example003 = require("./examples/example-003.json");
 
-result = validator.validate(example003, schema);
 console.log(`\n\n>>> Example 3`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example003));
 console.log(attributesValidator(example003));
 console.log(localizationValidator(example003));
 console.log(SHA256Validator(example003));
@@ -102,10 +83,8 @@ console.log(SHA256Validator(example003));
  */
 const example004 = require("./examples/example-004.json");
 
-result = validator.validate(example004, schema);
 console.log(`\n\n>>> Example 4`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example004));
 console.log(attributesValidator(example004));
 console.log(localizationValidator(example004));
 console.log(SHA256Validator(example004));
@@ -116,10 +95,8 @@ console.log(SHA256Validator(example004));
  */
 const example005 = require("./examples/example-005.json");
 
-result = validator.validate(example005, schema);
 console.log(`\n\n>>> Example 5`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example005));
 console.log(attributesValidator(example005));
 console.log(localizationValidator(example005));
 console.log(SHA256Validator(example005));
@@ -130,10 +107,8 @@ console.log(SHA256Validator(example005));
  */
 const example006 = require("./examples/example-006.json");
 
-result = validator.validate(example006, schema);
 console.log(`\n\n>>> Example 6`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example006));
 console.log(attributesValidator(example006));
 console.log(localizationValidator(example006));
 console.log(SHA256Validator(example006));
@@ -144,10 +119,8 @@ console.log(SHA256Validator(example006));
  */
 const example007 = require("./examples/example-007.json");
 
-result = validator.validate(example007, schema);
 console.log(`\n\n>>> Example 7`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example007));
 console.log(attributesValidator(example007));
 console.log(localizationValidator(example007));
 console.log(SHA256Validator(example007));
@@ -158,10 +131,8 @@ console.log(SHA256Validator(example007));
  */
 const example008 = require("./examples/example-008.json");
 
-result = validator.validate(example008, schema);
 console.log(`\n\n>>> Example 8`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example008));
 console.log(attributesValidator(example008));
 console.log(localizationValidator(example008));
 console.log(SHA256Validator(example008));
@@ -172,10 +143,8 @@ console.log(SHA256Validator(example008));
  */
 const example009 = require("./examples/example-009.json");
 
-result = validator.validate(example009, schema);
 console.log(`\n\n>>> Example 9`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example009));
 console.log(attributesValidator(example009));
 console.log(localizationValidator(example009));
 console.log(SHA256Validator(example009));
@@ -186,10 +155,8 @@ console.log(SHA256Validator(example009));
  */
 const example010 = require("./examples/example-010.json");
 
-result = validator.validate(example010, schema);
 console.log(`\n\n>>> Example 10`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example010));
 console.log(attributesValidator(example010));
 console.log(localizationValidator(example010));
 console.log(SHA256Validator(example010));
@@ -200,10 +167,8 @@ console.log(SHA256Validator(example010));
  */
 const example011 = require("./examples/example-011.json");
 
-result = validator.validate(example011, schema);
 console.log(`\n\n>>> Example 11`);
-if (result.errors.length === 0) console.log("JSON Schema Validation: Success");
-if (result.errors.length > 0) errorParser(result.errors);
+console.log(schemaValidator(example011));
 console.log(attributesValidator(example011));
 console.log(localizationValidator(example011));
 console.log(SHA256Validator(example011));
@@ -211,7 +176,7 @@ console.log(SHA256Validator(example011));
 /* Count errors for example011 */
 console.log(
   `--> Found ${
-    result.errors.length +
+    schemaValidator(example011).length +
     attributesValidator(example011).length +
     localizationValidator(example011).length +
     SHA256Validator(example011).length

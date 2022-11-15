@@ -15,25 +15,28 @@ const attributesValidator = (instance) => {
       attribute.display_type === "boost" &&
       typeof attribute.value !== "number"
     ) {
-      errors.push(
-        `Attribute error: Trait ${
+      errors.push({
+        type: 'attribute',
+        msg: `Trait ${
           attribute.trait_type
         } of type 'boost' requires number, found ${typeof attribute.value}`
-      );
+      });
     }
 
     // Percentage between [0-100]
     if (attribute.display_type === "percentage") {
       if (typeof attribute.value !== "number") {
-        errors.push(
-          `Attribute error: Trait ${
+        errors.push({
+          type: 'attribute',
+          msg: `Trait ${
             attribute.trait_type
           } of type 'percentage' requires number, found ${typeof attribute.value}`
-        );
+        });
       } else if (attribute.value < 0 || attribute.value > 100) {
-        errors.push(
-          `Attribute error: Trait ${attribute.trait_type} of type 'percentage' must be between [0-100], found ${attribute.value}`
-        );
+        errors.push({
+          type: 'attribute',
+          msg: `Trait ${attribute.trait_type} of type 'percentage' must be between [0-100], found ${attribute.value}`
+        });
       }
     }
 
@@ -41,17 +44,19 @@ const attributesValidator = (instance) => {
     if (attribute.display_type === "color") {
       if (matchRGBColors.exec(attribute.value) === null) {
         // format validation
-        errors.push(
-          `Attribute error: Trait ${attribute.trait_type} of type 'color' requires format "rgb(number,number,number)"`
-        );
+        errors.push({
+          type: 'attribute',
+          msg: `Trait ${attribute.trait_type} of type 'color' requires format "rgb(number,number,number)"`
+        });
       } else {
         // value validation range [0-255]
         const RGBValues = attribute.value.match(/\d+/g);
         RGBValues.map((rgbVal) => {
           if (rgbVal < 0 || rgbVal > 255) {
-            errors.push(
-              `Attribute error: Trait ${attribute.trait_type} of type 'color' requires RGB values between [0-255], got value: ${rgbVal}`
-            );
+            errors.push({
+              type: 'attribute',
+              msg: `Trait ${attribute.trait_type} of type 'color' requires RGB values between [0-255], got value: ${rgbVal}`
+            });
           }
         });
       }
@@ -62,11 +67,12 @@ const attributesValidator = (instance) => {
       attribute.display_type === "datetime" &&
       !Number.isInteger(attribute.value)
     ) {
-      errors.push(
-        `Attribute error: Trait ${
+      errors.push({
+        type: 'attribute',
+        msg: `Trait ${
           attribute.trait_type
         } of type 'datetime' requires integer value, got type: ${typeof attribute.value}`
-      );
+      });
     }
   });
 
